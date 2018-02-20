@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.king.repository.EmployeeRepository">
+
+	<resultMap id="employeeMap"  type="employee">
+		<id column="id"  property="id"/>
+		<result column="real_name"  property="realName"/>
+		<result column="sex"  property="sex"  typeHandler="com.king.handler.SexEnumTypeHandler"/>
+		<!---->
+		<!--&lt;!&ndash; 注意检查select输入的内容是否正确，需要Mapper接口中方法一致 &ndash;&gt;-->
+		<!--<association   fetchType="lazy" property="workCard"  column="id"  -->
+			<!--select="com.king.mapper.WorkCardMapper.getWorkCardByEmpId" />-->
+			<!---->
+		<!--<collection fetchType="eager" property="employeeTaskList"  column="id"  -->
+			<!--select="com.king.mapper.EmployeeTaskMapper.getEmployeeTaskByEmpId" />-->
+		<!---->
+		<!--<discriminator javaType="integer"  column="sex">-->
+			<!--<case value="1"  resultMap="maleHealthFormMapper"/>-->
+			<!--<case value="0"  resultMap="femaleHealthFormMapper"/>-->
+		<!--</discriminator>-->
+		 
+	</resultMap>
+	
+	<!--<resultMap type="femaleEmployee"  id="femaleHealthFormMapper"  extends="employeeMap">-->
+		<!--<association property="femaleHealthForm"  column="id" -->
+					<!--select="com.king.mapper.FemaleHealthFormMapper.getFemaleHealthForm"/>-->
+	<!--</resultMap>-->
+	<!---->
+	<!--<resultMap type="maleEmployee"  id="maleHealthFormMapper"  extends="employeeMap">-->
+		<!--<association property="maleHealthForm"  column="id" -->
+					<!--select="com.king.mapper.MaleHealthFormMapper.getMaleHealthForm"/>-->
+	<!--</resultMap>-->
+	
+	<select id="getEmployee"   resultMap="employeeMap"  parameterType="long"  >
+		select id, real_name, sex, birthday, mobile, email, POSITION, note from t_employee where id=#{id}
+	</select>
+
+	<insert id="insertEmployee"	parameterType="employee">
+		insert into t_employee (id,real_name, sex,birthday,mobile,email,position,note) values(#{id}, #{realName}, #{sex}, #{birthday}, #{mobile}, #{email}, #{position}, #{note});
+	</insert>
+
+	<delete id="deleteEmployee" parameterType="long">
+		delete from t_employee WHERE id=#{id};
+	</delete>
+
+	<update id="updateEmployee" parameterType="employee" >
+		update t_employee SET note=#{note} WHERE id=#{id}
+	</update>
+
+	<select id="findEmployees" parameterType="string" resultMap="employeeMap">
+		select * FROM t_employee WHERE real_name like concat('%',#{realName},'%')
+	</select>
+
+</mapper>

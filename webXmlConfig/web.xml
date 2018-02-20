@@ -1,0 +1,32 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!-- 配置Spring IoC配置文件路径-->
+    <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+
+  <!-- 配置ContextLoaderListener 以初始化Spring IoC 容器-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <!--配置DispatcherServlet-->
+  <servlet>
+    <!--注意：Spring MVC 框架会根据 servlet-name配置，找到/WEB-INF/dispatcher-servlet.xml作为配置文件载入到web工程中-->
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class >org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <!--DispatcherServlet url映射-->
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+</web-app>
