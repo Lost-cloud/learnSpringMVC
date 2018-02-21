@@ -41,7 +41,7 @@ public class ParamsControllerTest {
     public void testJsonRequest() throws Exception {
         mockMvc.perform(get("/params/json/findEmployee"))
                 .andDo(print())
-                .andExpect(view().name("employeeForm"));
+                .andExpect(view().name("postParams"));
     }
 
     @Test
@@ -53,6 +53,6 @@ public class ParamsControllerTest {
                 .andDo(print())
 //                .andExpect(jsonPath("$.roleName").value("king"))
 //                .andExpect(view().name("employeeList"));
-                .andExpect(forwardedUrl("/json/showEmployees"));
+                .andExpect(view().name("params/json/listEmployee"));
     }
 }

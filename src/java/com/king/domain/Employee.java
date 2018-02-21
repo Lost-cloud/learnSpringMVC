@@ -27,12 +27,6 @@ public class Employee {
         this.note=note;
     }
 
-    public Employee(Long id, String realName, String note) {
-        this.realName = realName;
-        this.id=id;
-        this.note = note;
-    }
-
     public Employee(){}
 
     public long getId() {

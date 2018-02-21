@@ -7,4 +7,18 @@
     <param-name>spring.profiles.active</param-name>
     <param-value>production</param-value>
   </context-param>
+
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>com.king.filters.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>charset</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

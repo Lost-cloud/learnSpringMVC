@@ -34,7 +34,7 @@ public class RegisterController {
         employee.setBirthday(DateUtil.transferFormDate(emp_birthday));
         employee.setSex(SexEnum.getSexById(Integer.parseInt(employee_sex)));
         employeeRepository.insertEmployee(employee);
-        return "redirect:/Employee/"+employee.getId();
+        return "redirect:/params/"+employee.getId();
     }
 
 }

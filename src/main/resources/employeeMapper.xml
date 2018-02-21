@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress SqlNoDataSourceInspection -->
 <mapper namespace="com.king.repository.EmployeeRepository">
 
 	<resultMap id="employeeMap"  type="employee">
@@ -34,11 +35,11 @@
 	<!--</resultMap>-->
 	
 	<select id="getEmployee"   resultMap="employeeMap"  parameterType="long"  >
-		select id, real_name, sex, birthday, mobile, email, POSITION, note from t_employee where id=#{id}
+		select id, real_name, sex, birthday, mobile, email, POSITION, note from t_employee where id=#{id};
 	</select>
 
-	<insert id="insertEmployee"	parameterType="employee">
-		insert into t_employee (id,real_name, sex,birthday,mobile,email,position,note) values(#{id}, #{realName}, #{sex}, #{birthday}, #{mobile}, #{email}, #{position}, #{note});
+	<insert id="insertEmployee"	parameterType="employee" useGeneratedKeys="true" keyProperty="id">
+		insert into t_employee (real_name, sex,birthday,mobile,email,position,note) values( #{realName}, #{sex}, #{birthday}, #{mobile}, #{email}, #{position}, #{note});
 	</insert>
 
 	<delete id="deleteEmployee" parameterType="long">
@@ -46,7 +47,7 @@
 	</delete>
 
 	<update id="updateEmployee" parameterType="employee" >
-		update t_employee SET note=#{note} WHERE id=#{id}
+		update t_employee SET note=#{note} WHERE id=#{id};
 	</update>
 
 	<select id="findEmployees" parameterType="string" resultMap="employeeMap">

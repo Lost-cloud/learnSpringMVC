@@ -16,6 +16,7 @@ import java.util.List;
 public class ParamsController {
 
     private final EmployeeRepository employeeRepository;
+    private List<Employee> employeeList;
 
     @Autowired
     public ParamsController(EmployeeRepository employeeRepository) {
@@ -23,7 +24,7 @@ public class ParamsController {
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public ModelAndView showModelAndView(@PathVariable long id) {
+    public ModelAndView showEmployeeByJsp(@PathVariable long id) {
         ModelAndView view = new ModelAndView();
         view.setViewName("showEmployee");
         view.addObject("employee", employeeRepository.getEmployee(id));
@@ -31,7 +32,7 @@ public class ParamsController {
     }
 
     @GetMapping(value = "/json/{id}")
-    public ModelAndView showEmployee(@PathVariable long id) {
+    public ModelAndView showEmployeeByJson(@PathVariable long id) {
         ModelAndView view = new ModelAndView();
         view.addObject(employeeRepository.getEmployee(id));
         view.setView(new MappingJackson2JsonView());
@@ -40,17 +41,15 @@ public class ParamsController {
 
     @RequestMapping(value = "/json/findEmployee")
     public String findEmployee(){
-        return "employeeForm";
+        return "postParams";
     }
 
 
-    private ModelAndView view;
-
     @RequestMapping(value = "/json/listEmployee",method = RequestMethod.POST)
     public ModelAndView showEmployees(@RequestBody EmployeeParams employeeName) {
-        List<Employee> employeeList=employeeRepository.findEmployees(employeeName.getEmployeeName());
-        view= new ModelAndView();
-        view.addObject("employeeList",employeeList);
+        employeeList = employeeRepository.findEmployees(employeeName.getEmployeeName());
+        ModelAndView view = new ModelAndView();
+        view.addObject("employeeList", employeeList);
 //        view.setViewName("employeeList");
         view.setView(new MappingJackson2JsonView());
         return view;
@@ -58,7 +57,9 @@ public class ParamsController {
 
     @RequestMapping(value = "/json/showEmployees",method = RequestMethod.GET)
     public ModelAndView showEmployees(){
-        view.setView(new MappingJackson2JsonView());
+        ModelAndView view = new ModelAndView();
+        view.addObject("employeeList", employeeList);
+        view.setViewName("employeeList");
         return view;
     }
 

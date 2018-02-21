@@ -42,7 +42,7 @@ public class RegisterControllerTest {
     }
 
     @Test
-    public void showModelAndView() throws Exception {
+    public void showEmployeeByJsp() throws Exception {
         mockMvc.perform(get("/Employee/1"))
                 .andExpect(view().name("showEmployee"))
                 .andExpect(model().attributeExists("employee"))
