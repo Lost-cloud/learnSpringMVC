@@ -8,7 +8,7 @@
 	<resultMap id="employeeMap"  type="employee">
 		<id column="id"  property="id"/>
 		<result column="real_name"  property="realName"/>
-		<result column="sex"  property="sex"  typeHandler="com.king.handler.SexEnumTypeHandler"/>
+		<result column="sex"  property="sex"  typeHandler="com.king.mybatisHandler.SexEnumTypeHandler"/>
 		<!---->
 		<!--&lt;!&ndash; 注意检查select输入的内容是否正确，需要Mapper接口中方法一致 &ndash;&gt;-->
 		<!--<association   fetchType="lazy" property="workCard"  column="id"  -->
