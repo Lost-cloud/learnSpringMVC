@@ -1,4 +1,4 @@
-package com.king.handler;
+package com.king.mybatisHandler;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

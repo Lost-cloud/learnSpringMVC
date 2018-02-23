@@ -10,7 +10,7 @@
 
   <filter>
     <filter-name>encodingFilter</filter-name>
-    <filter-class>com.king.filters.EncodingFilter</filter-class>
+    <filter-class>com.king.web.filter.EncodingFilter</filter-class>
     <init-param>
       <param-name>charset</param-name>
       <param-value>UTF-8</param-value>

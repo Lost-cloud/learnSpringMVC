@@ -1,5 +1,6 @@
-package com.king.config;
+package com.king.config.data;
 
+import com.king.config.data.DataSourceConfig;
 import com.king.repository.RepositoryScanMarker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +12,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @Import(DataSourceConfig.class)
-@ComponentScan(basePackageClasses = {RepositoryScanMarker.class},basePackages = {"com.king.repositoryImpl"})
+@ComponentScan(basePackageClasses = {RepositoryScanMarker.class})
 public class RepositoryConfig {
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource){

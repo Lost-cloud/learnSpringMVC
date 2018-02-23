@@ -1,25 +1,22 @@
-package com.king.controller;
+package com.king.web.controller;
 
 import com.king.domain.Employee;
 import com.king.enums.SexEnum;
-import com.king.repository.EmployeeRepository;
+import com.king.service.EmployeeService;
 import com.king.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 @Controller
 @RequestMapping(value = "/Employee")
 public class RegisterController {
 
-    private final EmployeeRepository employeeRepository;
+    private final EmployeeService employeeService;
 
     @Autowired
-    public RegisterController(@Qualifier("employeeMapper") EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public RegisterController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping(value = "/register")
@@ -33,7 +30,7 @@ public class RegisterController {
         //不能转换直接为Bean属性的表单参数，需要自己转换
         employee.setBirthday(DateUtil.transferFormDate(emp_birthday));
         employee.setSex(SexEnum.getSexById(Integer.parseInt(employee_sex)));
-        employeeRepository.insertEmployee(employee);
+        employeeService.insertEmployee(employee);
         return "redirect:/params/"+employee.getId();
     }
 

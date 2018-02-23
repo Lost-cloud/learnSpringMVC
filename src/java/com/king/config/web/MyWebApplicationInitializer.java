@@ -1,11 +1,8 @@
-package com.king.config;
+package com.king.config.web;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.web.context.ContextLoaderListener;
+import com.king.config.web.RootConfig;
+import com.king.config.web.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-import javax.servlet.ServletContextEvent;
-import java.util.Arrays;
 
 public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override

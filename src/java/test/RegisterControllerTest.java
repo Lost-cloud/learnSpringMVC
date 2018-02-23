@@ -1,8 +1,8 @@
 package test;
 
-import com.king.config.RootConfig;
-import com.king.config.WebConfig;
-import com.king.controller.RegisterController;
+import com.king.config.web.RootConfig;
+import com.king.config.web.WebConfig;
+import com.king.web.controller.RegisterController;
 import com.king.repository.EmployeeRepository;
 import org.junit.Before;
 import org.junit.Test;

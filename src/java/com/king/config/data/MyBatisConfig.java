@@ -1,5 +1,6 @@
-package com.king.config;
+package com.king.config.data;
 
+import com.king.service.ServiceScanMarker;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.king.repository.EmployeeRepository;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -8,12 +9,12 @@ import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.*;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 
 @Configuration
-@Import(RepositoryConfig.class)
+@Import({RepositoryConfig.class})
+@ComponentScan(basePackageClasses = ServiceScanMarker.class)
 public class MyBatisConfig {
 
     @Bean

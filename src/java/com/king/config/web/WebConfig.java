@@ -1,5 +1,6 @@
-package com.king.config;
+package com.king.config.web;
 
+import com.king.web.WebScanMarker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan(basePackages = "com.king.controller")
+@ComponentScan(basePackageClasses = WebScanMarker.class)
 @EnableWebMvc
 public class WebConfig {
 

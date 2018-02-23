@@ -1,4 +1,4 @@
-package com.king.config;
+package com.king.config.web;
 
 import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;

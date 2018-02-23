@@ -1,4 +1,4 @@
-package com.king.repositoryImpl;
+package com.king.repository.repositoryImpl;
 
 import com.king.domain.Employee;
 import com.king.enums.SexEnum;
@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Component("jdbcEmployeeRepo")
+@Repository("jdbcEmployeeRepo")
 public class JdbcEmployeeRepositoryImpl implements EmployeeRepository {
 
     private JdbcOperations jdbcOperations;

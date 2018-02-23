@@ -1,4 +1,4 @@
-package com.king.config;
+package com.king.config.data;
 
 import com.king.annotation.Develop;
 import com.king.annotation.Production;

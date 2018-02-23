@@ -1,4 +1,4 @@
-package com.king.filters;
+package com.king.web.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

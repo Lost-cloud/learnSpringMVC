@@ -15,7 +15,7 @@
     <!--注解驱动mvc-->
     <mvc:annotation-driven/>
 
-    <context:component-scan base-package="com.king.controller"/>
+    <context:component-scan base-package="com.king.web.controller"/>
 
     <!--配置视图解析器，并映射jsp-->
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
