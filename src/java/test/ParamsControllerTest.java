@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -91,5 +92,8 @@ public class ParamsControllerTest {
 
     }
 
-
+    @Test
+    public void testSession() throws Exception {
+        mockMvc.perform(get("/params/testSessionAttribute")).andDo(print()).andExpect(redirectedUrl("/json/sessionEmployees"));
+    }
 }

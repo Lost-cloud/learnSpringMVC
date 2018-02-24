@@ -4,20 +4,20 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter(filterName = "EncodingFilter")
+@WebFilter(filterName = "EncodingFilter",urlPatterns = "/*")
 public class EncodingFilter implements Filter {
-    private String charset;
+
+    private static final String CHARACTER_ENCODING = "utf-8";
 
     public void destroy() {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        req.setCharacterEncoding(this.charset);
+        req.setCharacterEncoding(CHARACTER_ENCODING);
         chain.doFilter(req, resp);
     }
 
     public void init(FilterConfig config) {
-        this.charset = config.getInitParameter("charset");
     }
 
 }

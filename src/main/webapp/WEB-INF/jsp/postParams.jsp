@@ -8,7 +8,7 @@
     <%--加载JQuery文件--%>
     <script  src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script>
-        const url = "/params/json/listEmployee";
+        const url = "/params/json/postJsonParams";
         const findName = {employeeName: "king"};
         const deleteIds=[93,94];
         $(function () {
@@ -37,7 +37,6 @@
     <form  id="findEmpForm"  action="<c:url value="/params/json/findEmployees"/>">
         <label>
             Employee Name : <input type="text" name="employeeName"><br>
-            Employee ID: <input type="text" name="id">
         </label>
         <input type="submit"  value="submit" id="showEmployees"/>
     </form>
