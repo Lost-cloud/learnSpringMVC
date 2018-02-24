@@ -32,7 +32,7 @@ public class DateUtil {
         return new GregorianCalendar(year  ,month-1,day+1).getTime();
     }
 
-    public static Date transferFormDate(String date) {
+    public static Date transferToDate(String date) {
         LocalDate localDate=LocalDate.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         return Date.from(LocalDateTime.of(localDate, LocalTime.MIN).atZone(ZoneId.of("Asia/Shanghai")).toInstant());
     }

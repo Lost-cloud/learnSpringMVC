@@ -7,7 +7,7 @@ import java.io.IOException;
 @WebFilter(filterName = "EncodingFilter",urlPatterns = "/*")
 public class EncodingFilter implements Filter {
 
-    private static final String CHARACTER_ENCODING = "utf-8";
+    private static final String CHARACTER_ENCODING = "UTF-8";
 
     public void destroy() {
     }

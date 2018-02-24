@@ -13,30 +13,29 @@
 
         <%--直接转换为bean对应的属性--%>
         <label>
-            Name:<input type="text" name="realName"/>
-        </label><br>
+            Name:<input type="text" name="realName"/><br>
+        </label>
         <label>
-            mobile:<input type="text" name="mobile"/>
-        </label><br>
-            <label>
-                email:<input type="text" name="email"/>
-            </label><br>
-            <label>
-                position:<input type="text" name="position"/>
-            </label><br>
-            <label>
-                Note:<input type="text" name="note"/>
-            </label><br>
+            mobile:<input type="text" name="mobile"/><br>
+        </label>
+        <label>
+            email:<input type="text" name="email"/><br>
+        </label>
+        <label>
+            position:<input type="text" name="position"/><br>
+        </label>
 
-            <%--bean不能对应的类型--%>
-            <label>
-                Birthday:<input type="date" name="emp_birthday"/>
-            </label><br>
-            <label>
-                Sex:<input type="text" name="employee_sex"/>
-            </label><br>
-
-        <input type="submit" value="Register"><br>
+        <%--bean不能对应的类型--%>
+        <label>
+            Birthday:<input type="date" name="birthday"/><br>
+        </label>
+        <label>
+            Sex:<input type="text" name="sex"/><br>
+        </label>
+        <label>
+            Note:<input type="text" name="note"/><br>
+         </label>
+         <input type="submit" value="Register"><br>
 
     </form>
 </body>

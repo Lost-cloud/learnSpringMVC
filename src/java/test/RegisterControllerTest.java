@@ -60,17 +60,16 @@ public class RegisterControllerTest {
     public void processRegistration() throws Exception {
         mockMvc.perform(post("/Employee/register")
                 .param("realName", "king")
-                .param("id", "4")
                 .param("note", "this is a mockMvc test")
-                .param("employee_sex","0")
-                .param("emp_birthday", LocalDate.of(1994,10,4).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .param("sex","男")
+                .param("birthday", LocalDate.of(1994,10,4).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .param("mobile", "18826455791")
                 .param("email", "lost000@outlook.com")
                 .param("position", "GangDong SenZen"))
                 .andDo(print())
                 .andExpect(handler().handlerType(RegisterController.class))
                 .andExpect(handler().methodName("processRegistration"))
-                .andExpect(redirectedUrl("/Employee/4"));
+                .andExpect(redirectedUrl("/Employee/json/114"));
     }
 
     @Test

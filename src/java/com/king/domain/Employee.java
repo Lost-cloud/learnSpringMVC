@@ -3,18 +3,22 @@ package com.king.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.king.enums.SexEnum;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Employee {
+public class Employee implements Serializable{
 
     private long id;
     private String realName;
     private String note;
+
     private SexEnum sex;
 
     @JsonFormat(pattern = "yyyy/MM/dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     private String mobile;
