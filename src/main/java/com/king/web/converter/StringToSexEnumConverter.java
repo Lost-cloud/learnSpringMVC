@@ -7,11 +7,11 @@ import org.apache.logging.log4j.core.config.Loggers;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-public class EmployeeConverter implements Converter<String,SexEnum>{
+public class StringToSexEnumConverter implements Converter<String,SexEnum>{
     private Logger logger= LogManager.getLogger();
     @Override
     public SexEnum convert(String s) {
-        logger.info("输出"+s);
+        logger.info("转换器拦截参数为"+s);
         if(s.equals("男")|s.equalsIgnoreCase("male")){
             return SexEnum.MALE;
         }else if(s.equals("女")|s.equalsIgnoreCase("female")){

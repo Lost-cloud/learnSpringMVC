@@ -27,10 +27,19 @@
     <slf4j-log4j13.version>1.0.1</slf4j-log4j13.version>
     <log4j.version>2.10.0</log4j.version>
     <hibernate-validator.verison>6.0.7.Final</hibernate-validator.verison>
+    <mokitoVersion>2.15.0</mokitoVersion>
   </properties>
 
 
   <dependencies>
+
+    <!--mockito测试库-->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mokitoVersion}</version>
+      <scope>test</scope>
+    </dependency>
 
     <!--log4j库-->
     <dependency>

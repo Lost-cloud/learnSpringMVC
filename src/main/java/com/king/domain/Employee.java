@@ -130,4 +130,13 @@ public class Employee implements Serializable{
                 +"\nnote : "+note+"\n";
     }
 
+    @Override
+    public int hashCode() {
+        return this.hashCode()*31;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.getId()>=((Employee)obj).getId();
+    }
 }

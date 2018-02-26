@@ -33,4 +33,5 @@ public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatc
         Long totalMax = (long)(10 * Math.pow(2, 20));
         registration.setMultipartConfig(new MultipartConfigElement(filePath,singleMax,totalMax,0));
     }
+
 }

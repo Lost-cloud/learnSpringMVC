@@ -2,6 +2,7 @@ package com.king.domain.builder;
 
 import com.king.domain.Employee;
 import com.king.enums.SexEnum;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 

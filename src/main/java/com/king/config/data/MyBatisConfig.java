@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 
 @Configuration
-@Import({RepositoryConfig.class})
 public class MyBatisConfig {
 
     @Bean

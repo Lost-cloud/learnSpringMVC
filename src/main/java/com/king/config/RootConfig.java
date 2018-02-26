@@ -15,6 +15,7 @@ public class RootConfig {
             super(Pattern.compile("com\\.king\\.web"));
         }
     }
+
 }
 
 

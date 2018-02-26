@@ -36,4 +36,10 @@ public class DateUtil {
         LocalDate localDate=LocalDate.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         return Date.from(LocalDateTime.of(localDate, LocalTime.MIN).atZone(ZoneId.of("Asia/Shanghai")).toInstant());
     }
+
+    public static Date transferToDate(String date,String pattern) {
+        LocalDate localDate=LocalDate.parse(date,DateTimeFormatter.ofPattern(pattern));
+        return Date.from(LocalDateTime.of(localDate, LocalTime.MIN).atZone(ZoneId.of("Asia/Shanghai")).toInstant());
+    }
+
 }

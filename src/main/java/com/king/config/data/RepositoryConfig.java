@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 
 @Configuration
-@Import(DataSourceConfig.class)
 public class RepositoryConfig {
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource){
