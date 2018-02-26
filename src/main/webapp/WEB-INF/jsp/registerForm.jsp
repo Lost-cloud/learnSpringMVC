@@ -5,7 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/cssFiles/style.css"/>">
+    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/cssFiles/style.css"/>">--%>
+    <style>
+        h1{
+            color: cornflowerblue;
+        }
+    </style>
 </head>
 <body>
     <h1>Registration</h1>

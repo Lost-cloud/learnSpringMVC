@@ -19,10 +19,39 @@
     <dbcp2.version>2.2.0</dbcp2.version>
     <pool2.version>2.5.0</pool2.version>
     <servlet.version>4.0.0</servlet.version>
+    <poi.version>3.17</poi.version>
+    <json-path.version>2.4.0</json-path.version>
+    <jackson-databind.version>2.9.4</jackson-databind.version>
+    <jstl-api.version>1.2</jstl-api.version>
+    <jstl-impl.version>1.2</jstl-impl.version>
+    <slf4j-log4j13.version>1.0.1</slf4j-log4j13.version>
+    <log4j.version>2.10.0</log4j.version>
+    <hibernate-validator.verison>6.0.7.Final</hibernate-validator.verison>
   </properties>
 
 
   <dependencies>
+
+    <!--log4j库-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j13</artifactId>
+      <version>${slf4j-log4j13.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+
+    <!--spring库-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
@@ -126,6 +155,7 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
+      <scope>compile</scope>
     </dependency>
 
     <!--mysql数据库驱动-->
@@ -146,7 +176,7 @@
     <dependency>
       <groupId>javax.servlet.jsp.jstl</groupId>
       <artifactId>jstl-api</artifactId>
-      <version>1.2</version>
+      <version>${jstl-api.version}</version>
       <exclusions>
         <exclusion>
           <groupId>javax.servlet</groupId>
@@ -163,7 +193,7 @@
     <dependency>
       <groupId>org.glassfish.web</groupId>
       <artifactId>jstl-impl</artifactId>
-      <version>1.2</version>
+      <version>${jstl-impl.version}</version>
       <exclusions>
         <exclusion>
           <groupId>javax.servlet</groupId>
@@ -184,33 +214,27 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.9.4</version>
+      <version>${jackson-databind.version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.jayway.jsonpath</groupId>
       <artifactId>json-path</artifactId>
-      <version>2.4.0</version>
-    </dependency>
-
-    <!--log4j库-->
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>2.10.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.10.0</version>
+      <version>${json-path.version}</version>
     </dependency>
 
     <!--POI库-->
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
-      <version>3.17</version>
+      <version>${poi.version}</version>
+    </dependency>
+
+    <!--JSR-303验证-->
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate-validator.verison}</version>
     </dependency>
 
   </dependencies>
