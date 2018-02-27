@@ -1,10 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ page pageEncoding="UTF-8" %>
 <!doctype html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>JsonPost</title>
+    <title><s:message code="testSessionJsonPost.title"/></title>
 </head>
 <body>
 <p>

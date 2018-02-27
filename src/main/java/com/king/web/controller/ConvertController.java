@@ -30,7 +30,8 @@ public class ConvertController {
     }
 
     @PostMapping(value = "/insertEmployee")
-    public String insertEmployee(@Valid List<Employee> employees,Errors errors) {
+    @Valid
+    public String insertEmployee( List<Employee> employees,Errors errors) {
         //如果方法返回String 在JSP视图中集合引用名称只能为employeeList，因为使用转换器后似乎会自动添加名为”employeeList“--的对象
         //如果要另取名称，需要返回ModelAndView
         if (errors.hasErrors() || employees == null) {

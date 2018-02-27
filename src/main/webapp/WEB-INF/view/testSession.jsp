@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <title>Title</title>
+    <title><s:message code="testSession.title"/></title>
 </head>
 <body>
     the id is :<c:out value="${sessionScope.id}"/><br>

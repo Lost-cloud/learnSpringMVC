@@ -30,7 +30,7 @@ public class Employee implements Serializable{
     //输出json格式
     @JsonFormat(pattern = "yyyy年MM月dd")
     //设置日期转换格式
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     //验证
     @Past
     @NotNull

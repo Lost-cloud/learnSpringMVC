@@ -41,8 +41,7 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void delete() {
-        int[] deleteID={5,6,7,8,9,10,11,13,14,15,16,17,18,19,22,23,24};
-        for (int i:deleteID){
+        for (int i=95;i<190;i++){
             employeeRepository.deleteEmployee(i);
         }
     }

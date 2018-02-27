@@ -1,10 +1,11 @@
-﻿<!doctype html>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<!doctype html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>EmployeeJsonParams</title>
+    <title><s:message code="postParams.title"/></title>
     <%--加载JQuery文件--%>
     <script  src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script>

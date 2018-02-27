@@ -6,6 +6,7 @@ import com.king.web.converter.StringToEmployeeCollectionConverter;
 import com.king.web.converter.StringToEmployeeConverter;
 import com.king.web.converter.StringToSexEnumConverter;
 import com.king.web.interceptor.EmployeeInterceptor;
+import com.king.web.interceptor.MyLocaleInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -22,13 +23,20 @@ import org.springframework.format.support.FormattingConversionService;
 import org.springframework.format.support.FormattingConversionServiceFactoryBean;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import java.time.ZoneId;
+import java.util.Locale;
+import java.util.TimeZone;
 
 @EnableWebMvc
 @Configuration
@@ -36,6 +44,9 @@ import org.springframework.web.servlet.view.JstlView;
 public class WebConfig  implements  WebMvcConfigurer {
 
     //不能同时构造器注入FormattingConversionService且调用方法addFormatters
+
+    @Autowired
+    private LocaleChangeInterceptor interceptor;
 
     //  WebMvcConfigure的方法设置转换器
     @Override
@@ -64,6 +75,7 @@ public class WebConfig  implements  WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new EmployeeInterceptor()).addPathPatterns("/Employee/**");
+        registry.addInterceptor(interceptor).addPathPatterns("/**");
     }
 
 //    静态资源的处理
@@ -78,12 +90,21 @@ public class WebConfig  implements  WebMvcConfigurer {
         return new StandardServletMultipartResolver();
     }
 
+    //资源文件加载
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource=new ReloadableResourceBundleMessageSource();
+        messageSource.setDefaultEncoding("utf-8");
+        messageSource.setCacheSeconds(3);
         messageSource.setBasename("classpath:title");
-        messageSource.setCacheSeconds(10);
         return messageSource;
     }
 
+    //地区处理，默认为简体中文
+    @Bean
+    public LocaleResolver localeResolver() {
+        SessionLocaleResolver slr=new SessionLocaleResolver();
+        slr.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
+        return slr;
+    }
 }

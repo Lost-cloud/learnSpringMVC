@@ -1,11 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <!doctype html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
-    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/cssFiles/style.css"/>">--%>
+    <title><s:message code="registerForm.title"/></title>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/style.css"/>">
     <style>
         h1{
             color: cornflowerblue;

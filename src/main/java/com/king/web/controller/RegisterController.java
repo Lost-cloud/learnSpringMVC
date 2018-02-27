@@ -4,13 +4,14 @@ import com.king.domain.Employee;
 import com.king.service.EmployeeService;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -24,12 +25,11 @@ public class RegisterController {
     @Autowired
     public RegisterController(EmployeeService employeeService) {
         this.employeeService = employeeService;
-
     }
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        LogManager.getLogger().info("进入InitBinder "+binder.getConversionService());
+        LogManager.getLogger().info("进入InitBinder ");
     }
 
     @GetMapping(value = "/register")

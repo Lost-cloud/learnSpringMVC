@@ -62,8 +62,8 @@ public class ConvertControllerTest {
 //        when(employeeService.insertEmployee(unsaved)).thenReturn(146);
         MvcResult result = mockMvc.perform(post("/convert/insertEmployee")
                 .param("employeeList", "jack-1-1994/10/04-18617164782-lost0000@outlook.com-广东深圳-byconverter" +
-                        ",jack-1-1994/10/04-18617164782-lost0000@outlook.com-广东深圳-byconverter"))
+                        ",jack-0-1994/10/04-18617164782-lost0000@outlook.com-广东深圳-byconverter"))
                 .andDo(print())
-                .andExpect(view().name("testConvert")).andReturn();
+                .andExpect(view().name("testConvertOutput")).andReturn();
     }
 }

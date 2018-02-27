@@ -1,12 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: king
-  Date: 2018/2/25
-  Time: 12:26
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <!doctype html>
 <html>
 <head>
@@ -16,7 +10,7 @@
         }
     </style>
     <meta charset="UTF-8">
-    <title>Upload</title>
+    <title><s:message code="testUpload.title"/></title>
 </head>
 <h1>上传文件</h1>
 <body>
