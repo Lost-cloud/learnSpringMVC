@@ -12,8 +12,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.convert.converter.GenericConverter;
+import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.format.support.FormattingConversionServiceFactoryBean;
 import org.springframework.web.multipart.MultipartResolver;
@@ -31,24 +35,21 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackageClasses = WebScanMarker.class)
 public class WebConfig  implements  WebMvcConfigurer {
 
-    @Autowired
-    private FormattingConversionService conversionService;
+    //不能同时构造器注入FormattingConversionService且调用方法addFormatters
 
-//    //实现WebMvcConfigure去设置转换器、拦截器等
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        registry.addConverter(new StringToSexEnumConverter());
-//        registry.addConverter(new StringToEmployeeConverter());
-//        registry.addConverter(new StringToEmployeeCollectionConverter(conversionService));
-//    }
+    //  WebMvcConfigure的方法设置转换器
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(new StringToSexEnumConverter());
+        registry.addConverter(new StringToEmployeeConverter());
+    }
 
+    //自定义Bean设置，需要注入一个FormattingConversionService
     @Bean
-    public Converter myConverter() {
-        StringToEmployeeConverter employeeConverter=new StringToEmployeeConverter();
-        conversionService.addConverter(employeeConverter);
-        StringToEmployeeCollectionConverter employeeCollectionConverter=new StringToEmployeeCollectionConverter(conversionService);
-        conversionService.addConverter(employeeCollectionConverter);
-        return employeeConverter;
+    public GenericConverter myConverter(FormattingConversionService mvcConversionService) {
+        StringToEmployeeCollectionConverter collectionConverter=new StringToEmployeeCollectionConverter(mvcConversionService);
+        mvcConversionService.addConverter(collectionConverter);
+        return collectionConverter;
     }
 
     @Bean

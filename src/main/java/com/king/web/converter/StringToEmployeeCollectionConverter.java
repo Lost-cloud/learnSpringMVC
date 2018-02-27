@@ -38,9 +38,9 @@ public class StringToEmployeeCollectionConverter implements ConditionalGenericCo
         String string = (String) source;
         String[] fields = StringUtils.commaDelimitedListToStringArray(string);
         TypeDescriptor elementDesc = targetType.getElementTypeDescriptor();
-        Collection<Employee> target = CollectionFactory.createCollection(targetType.getType(),elementDesc != null ? elementDesc.getType() : null, fields.length);
+        Collection<Object> target = CollectionFactory.createCollection(targetType.getType(),elementDesc != null ? elementDesc.getType() : null, fields.length);
         for (String field : fields) {
-            Employee targetElement = (Employee) this.conversionService.convert(field, sourceType,elementDesc);
+            Object targetElement =  this.conversionService.convert(field, sourceType,elementDesc);
             target.add(targetElement);
         }
         return target;
