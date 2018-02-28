@@ -28,10 +28,35 @@
     <log4j.version>2.10.0</log4j.version>
     <hibernate-validator.verison>6.0.7.Final</hibernate-validator.verison>
     <mokitoVersion>2.15.0</mokitoVersion>
+    <springDataRedisVersion>2.0.3.RELEASE</springDataRedisVersion>
   </properties>
 
-
   <dependencies>
+
+    <!--Spring-data-redis库-->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>${springDataRedisVersion}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!--Jedis.jar-->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <type>jar</type>
+      <version>2.9.0</version>
+    </dependency>
 
     <!--mockito测试库-->
     <dependency>
@@ -164,7 +189,7 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
-      <scope>compile</scope>
+      <scope>test</scope>
     </dependency>
 
     <!--mysql数据库驱动-->
