@@ -1,7 +1,7 @@
 package repository;
 
 import com.king.config.RootConfig;
-import com.king.config.web.WebConfig;
+import com.king.web.WebConfig;
 import com.king.domain.Employee;
 import com.king.repository.EmployeeRepository;
 import org.apache.logging.log4j.LogManager;

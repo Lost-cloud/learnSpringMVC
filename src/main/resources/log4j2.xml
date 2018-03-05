@@ -2,11 +2,11 @@
 <Configuration status="DEBUG">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%5p %d{yyy MM dd HH:mm:ss,SSS} %C  %m%n%n" />
+            <PatternLayout pattern="%5p %d{yyyy-MM-dd HH:mm:ss} %C  \n%m%n%n" />
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="info">
+        <Root level="debug">
             <AppenderRef ref="Console" />
         </Root>
     </Loggers>

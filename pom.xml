@@ -33,21 +33,18 @@
 
   <dependencies>
 
+    <!--slf4j-log4j13-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j13</artifactId>
+      <version>${slf4j-log4j13.version}</version>
+    </dependency>
+
     <!--Spring-data-redis库-->
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-redis</artifactId>
       <version>${springDataRedisVersion}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <!--Jedis.jar-->
@@ -67,12 +64,6 @@
     </dependency>
 
     <!--log4j库-->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j13</artifactId>
-      <version>${slf4j-log4j13.version}</version>
-    </dependency>
-
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>

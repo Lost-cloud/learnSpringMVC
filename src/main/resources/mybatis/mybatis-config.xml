@@ -48,6 +48,7 @@
 	
 	<mappers>
 		<mapper resource="employeeMapper.xml"/>
+		<mapper resource="RedPacketMapper.xml"/>
 	</mappers>
 	
 </configuration>

@@ -1,6 +1,7 @@
 package com.king.config.web;
 
 import com.king.config.RootConfig;
+import com.king.web.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.MultipartConfigElement;

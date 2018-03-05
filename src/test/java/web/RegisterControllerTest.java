@@ -1,11 +1,9 @@
 package web;
 
 import com.king.config.RootConfig;
-import com.king.config.web.WebConfig;
-import com.king.service.EmployeeService;
+import com.king.web.WebConfig;
 import com.king.web.controller.RegisterController;
 import com.king.repository.EmployeeRepository;
-import org.apache.logging.log4j.LogManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +13,6 @@ import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 

@@ -5,11 +5,18 @@ import com.king.repository.EmployeeRepository;
 import com.king.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository empRepository;
@@ -25,6 +32,9 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return 返回对应id的Employee
      */
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED,
+                propagation = Propagation.REQUIRED)
+    @Cacheable(value = "employee",key = "'redis_employee_'+#id")
     public Employee getEmployee(long id) {
         return empRepository.getEmployee(id);
     }
@@ -34,6 +44,10 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @param id 待删除Employee的id
      * @return 返回删除的数目
      */
+    @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED,
+            propagation = Propagation.REQUIRED)
+    @CacheEvict(value = "employee",key = "'redis_employee_'+#id")
     public int deleteEmployee(long id) {
         return empRepository.deleteEmployee(id);
     }
@@ -41,9 +55,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     /**
      *
      * @param deleteIDs 待删除Employee的id集合
-     * @return int 返回删除的总数
+     * @return 返回删除的总数
      */
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED,
+            propagation = Propagation.REQUIRED)
     public int deleteEmployees(List<Long> deleteIDs) {
         int count=0;
         for (Long deleteID : deleteIDs) {
@@ -59,18 +75,26 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return int 升级的数目 1
      */
     @Override
-    public int updateEmployee(Employee employee) {
-        return empRepository.updateEmployee(employee);
+    @Transactional(isolation = Isolation.READ_COMMITTED,
+            propagation = Propagation.REQUIRED)
+    @CachePut(value = "employee",key = "'redis_employee_'+#employee.id")
+    public Employee updateEmployee(Employee employee) {
+        empRepository.updateEmployee(employee);
+        return employee;
     }
 
     /**
      *
      * @param employee 插入的Employee对象
-     * @return int 返回插入的数目 1
+     * @return int 返回插入的插入对象id
      */
     @Override
-    public int insertEmployee(Employee employee) {
-        return empRepository.insertEmployee(employee);
+    @Transactional(isolation = Isolation.READ_COMMITTED,
+            propagation = Propagation.REQUIRED)
+    @CachePut(value = "employee",key = "'redis_employee_'+#result.id")
+    public Employee insertEmployee(Employee employee) {
+        empRepository.insertEmployee(employee);
+        return employee;
     }
 
     /**
@@ -79,13 +103,13 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return 返回插入的总数
      */
     @Override
-    public int insertEmployees(List<Employee> empList) {
-        int count=0;
+    @Transactional(isolation = Isolation.READ_COMMITTED,
+            propagation = Propagation.REQUIRED)
+    public List<Employee> insertEmployees(List<Employee> empList) {
         for (Employee employee : empList) {
             insertEmployee(employee);
-            count++;
         }
-        return count;
+        return empList;
     }
 
     /**
@@ -94,6 +118,8 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return Employee对象的集合
      */
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED,
+            propagation = Propagation.REQUIRED)
     public List<Employee> findEmployees(String name) {
         return empRepository.findEmployees(name);
     }
