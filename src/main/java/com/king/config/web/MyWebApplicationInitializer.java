@@ -2,6 +2,7 @@ package com.king.config.web;
 
 import com.king.config.RootConfig;
 import com.king.web.WebConfig;
+import com.sun.javafx.runtime.SystemProperties;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.MultipartConfigElement;
@@ -16,6 +17,7 @@ public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatc
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
+        System.setProperty("spring.profiles.active", "production");
         return new Class[]{WebConfig.class};
     }
 

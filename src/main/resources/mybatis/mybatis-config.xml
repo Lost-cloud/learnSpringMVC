@@ -47,8 +47,9 @@
 	<!--</environments>-->
 	
 	<mappers>
-		<mapper resource="employeeMapper.xml"/>
-		<mapper resource="RedPacketMapper.xml"/>
+		<mapper resource="mybatis/employeeMapper.xml"/>
+		<mapper resource="mybatis/RedPacketMapper.xml"/>
+		<mapper resource="mybatis/UserRedPacketMapper.xml"/>
 	</mappers>
 	
 </configuration>

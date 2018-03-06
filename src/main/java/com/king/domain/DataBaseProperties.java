@@ -21,15 +21,26 @@ public class DataBaseProperties {
     @Value("#{environment['basicDataSource.maxIdle']}")
     private String basicDataSourceMaxIdle;
 
-    @Value("#{environment['basicDataSource.maxWaitMills']}")
-    private String basicDateMaxWaitMills;
+    @Value("#{environment['basicDataSource.maxWaitMillis']}")
+    private String bdcMaxWaitMills;
+
+    @Value("#{environment['basicDataSource.maxTotal']}")
+    private String basicDataSourceMaxTotal;
+
+    public String getBasicDataSourceMaxTotal() {
+        return basicDataSourceMaxTotal;
+    }
+
+    public void setBasicDataSourceMaxTotal(String basicDataSourceMaxTotal) {
+        this.basicDataSourceMaxTotal = basicDataSourceMaxTotal;
+    }
 
     public void setBasicDataSourceMaxIdle(String basicDataSourceMaxIdle) {
         this.basicDataSourceMaxIdle = basicDataSourceMaxIdle;
     }
 
-    public void setBasicDateMaxWaitMills(String basicDateMaxWaitMills) {
-        this.basicDateMaxWaitMills = basicDateMaxWaitMills;
+    public void setBdcMaxWaitMills(String bdcMaxWaitMills) {
+        this.bdcMaxWaitMills = bdcMaxWaitMills;
     }
 
     public void setDriver(String driver) {
@@ -64,8 +75,8 @@ public class DataBaseProperties {
         return password;
     }
 
-    public String getBasicDateMaxWaitMills() {
-        return basicDateMaxWaitMills;
+    public String getBdcMaxWaitMills() {
+        return bdcMaxWaitMills;
     }
 
     public String getBasicDataSourceMaxIdle() {

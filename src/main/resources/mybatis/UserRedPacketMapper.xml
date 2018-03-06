@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress SqlNoDataSourceInspection -->
-<mapper namespace="com.king.repository.EmployeeRepository">
+<mapper namespace="com.king.repository.UserRedPacketDao">
 
-    <resultMap id="employeeMap"  type="employee">
+    <resultMap id="userMap"  type="employee">
         <result column="red_packet_id"  property="redPacketId"/>
         <result column="user_id" property="userId"/>
         <result column="grab_time" property="grabTime"/>

@@ -28,15 +28,22 @@ public class UserRedPacketServiceImpl implements UserRedPacketService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED,propagation = Propagation.REQUIRED)
     public int grabRedPacket(Long redPacketId, Long userId) {
-        //获取红包信息
+        //获取红包信息,同时记录version的初始值
         RedPacket redPacket = redPacketDao.getRedPacket(redPacketId);
         //红包大于0
         if (redPacket.getStock() > 0) {
-            redPacketDao.decreaseRedPacket(redPacketId);
+            //            判断version是否被改变
+            int update = redPacketDao.decreaseRedPacketForVersion(redPacketId, redPacket.getVersion());
+            //如果version改变了，证明被修改过，从而无法找到一开始version的数据
+            //所以会返回0
+            if (update == 0) {
+                return FAILED;
+            }
+//            redPacketDao.decreaseRedPacket(redPacketId);
             UserRedPacket userRedPacket=new UserRedPacket();
             userRedPacket.setRedPacketId(redPacketId);
             userRedPacket.setUserId(userId);
-            userRedPacket.setAmount(redPacket.getAmount());
+            userRedPacket.setAmount(redPacket.getUnitAmount());
             userRedPacket.setNote("抢红包"+redPacketId);
             //插入抢红包信息
             return userRedPacketDao.grabRedPacket(userRedPacket);

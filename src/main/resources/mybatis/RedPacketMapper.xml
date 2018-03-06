@@ -18,4 +18,8 @@
         UPDATE t_red_packet set stock=stock-1 WHERE id=#{id}
     </update>
 
+    <update id="decreaseRedPacketForVersion">
+        UPDATE t_red_packet SET stock=stock-1,version=version+1 WHERE id=#{id} and version=#{version}
+    </update>
+
 </mapper>

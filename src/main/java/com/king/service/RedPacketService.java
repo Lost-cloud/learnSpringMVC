@@ -16,4 +16,6 @@ public interface RedPacketService {
      * @return 影响条数
      */
     int decreaseRedPacket(Long id);
+
+    int decreaseRedPacketForVersion(Long id, Integer version);
 }

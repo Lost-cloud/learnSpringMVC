@@ -31,6 +31,7 @@ public class MyBatisConfig {
         MapperFactoryBean<EmployeeRepository> mapperFactoryBean=new MapperFactoryBean<>();
         mapperFactoryBean.setMapperInterface(EmployeeRepository.class);
         mapperFactoryBean.setSqlSessionFactory(sqlSessionFactory);
+        mapperFactoryBean.afterPropertiesSet();
         return mapperFactoryBean;
     }
 
