@@ -22,7 +22,7 @@ public class GrabRedPacketController {
     @RequestMapping("/packet")
     public ModelAndView grabRedPacket(Long redPacketId,Long userId) {
         ModelAndView mv=new ModelAndView();
-        int result=packetService.grabRedPacket(redPacketId,userId);
+        int result= packetService.grabRedPacketByRedis(redPacketId,userId).intValue();
         mv.addObject("Success " + result);
         mv.addObject("Message ", result!=0 ? "抢红包成功" : "抢红包失败");
         mv.setView(new MappingJackson2JsonView());

@@ -123,7 +123,7 @@ public class Employee implements Serializable{
         return "the id is "+id+"\n"
                 +"name : " +realName
                 +"\ngender : "+sex
-                + "\nbirthday : "+new SimpleDateFormat("yyyy年MM月dd日").format(birthday)
+                + "\nbirthday : "+new SimpleDateFormat("yyyy年MM月dd").format(birthday)
                 +"\nmobile : "+ mobile
                 +"\nemail : "+email
                 +"\nposition : " +position

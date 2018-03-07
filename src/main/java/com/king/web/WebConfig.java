@@ -14,6 +14,9 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.core.convert.converter.GenericConverter;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.scheduling.annotation.AsyncConfigurerSupport;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
@@ -28,11 +31,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import java.util.Locale;
+import java.util.concurrent.Executor;
 
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackageClasses = WebScanMarker.class)
-public class WebConfig  implements  WebMvcConfigurer {
+public class WebConfig implements  WebMvcConfigurer {
 
     //不能同时构造器注入FormattingConversionService且调用方法addFormatters
 
@@ -98,4 +102,6 @@ public class WebConfig  implements  WebMvcConfigurer {
         slr.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
         return slr;
     }
+
+
 }

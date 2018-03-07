@@ -80,7 +80,7 @@ public class RedisConfigTest {
                 .buildEmail("lost0000@outlook.com")
                 .buildSex(SexEnum.MALE)
                 .buildNote("by Redis")
-                .buildPosition("广东深圳")
+                .buildPosition("广东-深圳")
                 .getEmployee();
     }
 
@@ -149,6 +149,8 @@ public class RedisConfigTest {
         }
         redisTemplate.delete("list");
         redisTemplate.opsForList().leftPushAll("list", nodeList);
+        BoundListOperations operations = redisTemplate.boundListOps("list");
+        logger.info("list ::"+operations.range(0,2));
         logger.info(redisTemplate.opsForList().range("list", 0, 4));
         redisTemplate.getConnectionFactory().getConnection().lInsert("list".getBytes("utf-8")
                 , RedisListCommands.Position.AFTER, "node2".getBytes("utf-8"), "after_node".getBytes("utf-8"));
