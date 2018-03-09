@@ -8,7 +8,6 @@
   <version>1.0-SNAPSHOT</version>
   <name>LearnSpringMVC Maven WebApp</name>
   <url>http://maven.apache.org</url>
-
   <properties>
     <spring.version>5.0.3.RELEASE</spring.version>
     <mysql.version>8.0.8-dmr</mysql.version>
@@ -28,10 +27,32 @@
     <log4j.version>2.10.0</log4j.version>
     <hibernate-validator.verison>6.0.7.Final</hibernate-validator.verison>
     <mokitoVersion>2.15.0</mokitoVersion>
+    <springDataRedisVersion>2.0.3.RELEASE</springDataRedisVersion>
   </properties>
 
-
   <dependencies>
+
+    <!--slf4j-log4j13-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j13</artifactId>
+      <version>${slf4j-log4j13.version}</version>
+    </dependency>
+
+    <!--Spring-data-redis库-->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>${springDataRedisVersion}</version>
+    </dependency>
+
+    <!--Jedis.jar-->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <type>jar</type>
+      <version>2.9.0</version>
+    </dependency>
 
     <!--mockito测试库-->
     <dependency>
@@ -42,12 +63,6 @@
     </dependency>
 
     <!--log4j库-->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j13</artifactId>
-      <version>${slf4j-log4j13.version}</version>
-    </dependency>
-
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
@@ -164,7 +179,7 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
-      <scope>compile</scope>
+      <scope>test</scope>
     </dependency>
 
     <!--mysql数据库驱动-->
@@ -250,6 +265,16 @@
 
   <build>
     <finalName>LearnSpringMVC</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+    </plugins>
   </build>
 
 </project>

@@ -1,26 +1,22 @@
-package com.king.config.web;
+package com.king.web;
 
-import com.king.domain.Employee;
 import com.king.web.WebScanMarker;
 import com.king.web.converter.StringToEmployeeCollectionConverter;
 import com.king.web.converter.StringToEmployeeConverter;
 import com.king.web.converter.StringToSexEnumConverter;
 import com.king.web.interceptor.EmployeeInterceptor;
-import com.king.web.interceptor.MyLocaleInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.core.convert.ConversionService;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.GenericConverter;
-import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
-import org.springframework.format.support.FormattingConversionServiceFactoryBean;
+import org.springframework.scheduling.annotation.AsyncConfigurerSupport;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
@@ -34,19 +30,18 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import java.time.ZoneId;
 import java.util.Locale;
-import java.util.TimeZone;
+import java.util.concurrent.Executor;
 
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackageClasses = WebScanMarker.class)
-public class WebConfig  implements  WebMvcConfigurer {
+public class WebConfig implements  WebMvcConfigurer {
 
     //不能同时构造器注入FormattingConversionService且调用方法addFormatters
 
     @Autowired
-    private LocaleChangeInterceptor interceptor;
+    private LocaleChangeInterceptor localeChangeInterceptor;
 
     //  WebMvcConfigure的方法设置转换器
     @Override
@@ -75,7 +70,7 @@ public class WebConfig  implements  WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new EmployeeInterceptor()).addPathPatterns("/Employee/**");
-        registry.addInterceptor(interceptor).addPathPatterns("/**");
+        registry.addInterceptor(localeChangeInterceptor).addPathPatterns("/**");
     }
 
 //    静态资源的处理
@@ -107,4 +102,6 @@ public class WebConfig  implements  WebMvcConfigurer {
         slr.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
         return slr;
     }
+
+
 }

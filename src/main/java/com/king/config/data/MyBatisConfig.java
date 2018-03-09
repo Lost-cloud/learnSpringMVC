@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.*;
-import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -18,7 +18,7 @@ public class MyBatisConfig {
     public SqlSessionFactoryBean sqlSessionFactory( DataSource dataSource) {
         SqlSessionFactoryBean sqlSessionFactoryBean=new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
-        sqlSessionFactoryBean.setConfigLocation(new DefaultResourceLoader().getResource("classpath:mybatis-config.xml"));
+        sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("mybatis/mybatis-config.xml"));
         return sqlSessionFactoryBean;
     }
 
@@ -31,6 +31,7 @@ public class MyBatisConfig {
         MapperFactoryBean<EmployeeRepository> mapperFactoryBean=new MapperFactoryBean<>();
         mapperFactoryBean.setMapperInterface(EmployeeRepository.class);
         mapperFactoryBean.setSqlSessionFactory(sqlSessionFactory);
+        mapperFactoryBean.afterPropertiesSet();
         return mapperFactoryBean;
     }
 

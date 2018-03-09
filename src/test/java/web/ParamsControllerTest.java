@@ -1,7 +1,7 @@
 package web;
 
 import com.king.config.RootConfig;
-import com.king.config.web.WebConfig;
+import com.king.web.WebConfig;
 import com.king.service.EmployeeService;
 import org.junit.Before;
 import org.junit.Test;

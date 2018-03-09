@@ -65,7 +65,8 @@ public class DataSourceConfig {
     private Properties getProperties() {
         Properties properties=new Properties();
         properties.setProperty("maxIdle",dbProps.getBasicDataSourceMaxIdle());
-        properties.setProperty("maxWaitMills",dbProps.getBasicDateMaxWaitMills());
+        properties.setProperty("maxWaitMillis",dbProps.getBdcMaxWaitMills());
+        properties.setProperty("maxTotal", dbProps.getBasicDataSourceMaxTotal());
         properties.setProperty("driverClassName",dbProps.getDriver());
         properties.setProperty("url",dbProps.getUrl());
         properties.setProperty("username", dbProps.getUsername());

@@ -6,6 +6,7 @@ import org.springframework.core.type.filter.RegexPatternTypeFilter;
 import java.util.regex.Pattern;
 
 @Configuration
+@ImportResource("classpath:applicationContext.xml")
 @ComponentScan(basePackages = "com.king",
         excludeFilters = {@ComponentScan.Filter(type = FilterType.CUSTOM,value =RootConfig.WebPackage.class)
         })
